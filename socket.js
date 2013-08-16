@@ -83,7 +83,7 @@ module.exports = function(meryl) {
     });
     var app = http.createServer(meryl.cgi());
     app.addListener('upgrade', handler);
-    app.listen(process.env.PORT, process.env.IP);
+    app.listen('/tmp/5napchat');
 };
 
 module.exports.getClient = function(auth_token) {
