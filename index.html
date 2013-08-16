@@ -1,0 +1,582 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>5napChat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//weloveiconfonts.com/api/?family=entypo">
+        <style>
+            body {
+                overflow:hidden;
+            }
+            #login {
+                background: #888;
+            }
+            #login > .modal-dialog > .modal-content > .modal-header {
+                padding-bottom:0;
+            }
+            #loginTabs {
+                border-bottom:0;
+            }
+            #or > h4 {
+                line-height: 2.2;
+                padding: 0 1em
+            }
+            #friendFilter, #friendFilter + i {
+                border-radius:0;
+            }
+            .tab-pane .list-group-item:first-child {
+                border-radius:0;
+                border-top:0;
+            }
+            #new {
+                border-radius: .25em;
+                border:1px solid #ccc;
+                border-top-left-radius:0;
+                border-top-right-radius:0;
+                border-top:none;
+            }
+            li.special {
+                display:none;
+                list-style-type:none;
+            }
+            .nobullet {
+                list-style-type:none;
+                padding:0;
+            }
+            .entypo {
+                font-family: entypo;
+                font-style:normal;
+            }
+            .list-group-item > a:link:hover.entypo {
+                text-decoration:none;
+            }
+            #snaps a:link {
+                text-decoration:underline;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="modal fade" id="login" data-backdrop="static" style="display:block">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <ul class="nav nav-tabs" id="loginTabs">
+                            <li class="active">
+                                <a href="#in" data-toggle="tab"><h4>Login</h4></a>
+                            </li>
+                            <li id="or">
+                                <h4>or</h4>
+                            </li>
+                            <li>
+                                <a href="#up" data-toggle="tab"><h4>Signup</h4></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger alert-dismissable" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <div class="text"></div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="in">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-lg-2 control-label">Username</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control" id="inUser" placeholder="epic_user"
+                                            autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPass" class="col-lg-2 control-label">Password</label>
+                                        <div class="col-lg-10">
+                                            <input type="password" class="form-control" id="inPass" placeholder="please don't let this be &ldquo;password&rdquo;">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-offset-2 col-lg-10">
+                                            <div class="checkbox" checked>
+                                                <label>
+                                                    <input type="checkbox" id="inRemember" checked>Remember me</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <button type="submit" class="btn btn-primary pull-right" id="signIn">Sign in
+                                                <i class="entypo entypo-login"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="up">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="upEmail" class="col-lg-2 control-label">Email</label>
+                                        <div class="col-lg-10">
+                                            <input type="email" class="form-control" id="upEmail" placeholder="someone@example.com"
+                                            autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="upPhone" class="col-lg-2 control-label">Phone Number</label>
+                                        <div class="col-lg-10">
+                                            <input type="tel" class="form-control" id="upPhone" placeholder="+1 (800) 555-2368">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="upUser" class="col-lg-2 control-label">Username</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control" id="upUser" placeholder="my_super_cool_username">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="upPass" class="col-lg-2 control-label">Password</label>
+                                        <div class="col-lg-10">
+                                            <input type="password" class="form-control" id="upPass" placeholder="please don't let this be &ldquo;password&rdquo;">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-offset-2 col-lg-10">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="upRemember" checked>Remember me</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <button type="submit" class="btn btn-primary pull-right" id="signUp">Sign up
+                                                <i class="entypo entypo-login"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="snapImage">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Snap from
+                            <span class="name">name</span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <img id="snapImg" class="img-responsive"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="snapVideo">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Snap from
+                            <span class="name">name</span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <video id="snapVid" class="img-responsive" controls/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="settings">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h3>Settings</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <h4>My Account</h4>
+                            <div class="form-group">
+                                <label for="sUsername" class="col-lg-3 control-label">Username</label>
+                                <div class="col-lg-9">
+                                    <span class="form-control username"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sPhone" class="col-lg-3 control-label">Mobile #</label>
+                                <div class="col-lg-9">
+                                    <input type="tel" class="form-control" id="sPhone" value="+1-800-555-5821">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sEmail" class="col-lg-3 control-label">Email</label>
+                                <div class="col-lg-9">
+                                    <input type="email" class="form-control" id="sEmail" value="someone@example.com">
+                                </div>
+                            </div>
+                            <hr />
+                            <h4>Who can&hellip;</h4>
+                            <div class="form-group">
+                                <label for="sPriv" class="col-lg-3 control-label">Send me snaps</label>
+                                <div class="col-lg-9">
+                                    <select class="form-control" id="sPriv">
+                                        <option>My Friends</option>
+                                        <option>Everyone</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-9">
+                                    <button class="btn btn-block btn-warning" id="clearBtn">Clear feed</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div>&nbsp;</div>
+            <div class="pull-right btn-group">
+                <button class="btn btn-sm" data-target="#settings" data-toggle="modal">
+                    <i class="entypo entypo-tools"></i> Settings</button>
+                <button class="btn btn-danger btn-sm" id="logout">Logout
+                    <i class="entypo entypo-logout"></i>
+                </button>
+                <span></span>
+            </div>
+            <h1>Welcome
+                <span class="full_name"></span>
+            </h1>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#friends" data-toggle="tab">Friends <i class="entypo entypo-users"></i></a>
+                </li>
+                <li>
+                    <a href="#snaps" data-toggle="tab">Snaps <i class="entypo entypo-picture"></i></a>
+                </li>
+                <li>
+                    <a href="#new" data-toggle="tab">New <i class="entypo entypo-camera"></i></a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pane">
+                <div class="tab-pane active" id="friends">
+                    <ul class="list-group">
+                        <li class="input-group">
+                            <input id="friendFilter" class="form-control" />
+                            <i class="entypo entypo-search input-group-addon"></i>
+                        </li>
+                        <li class="special list-group-item">You don't have a friend named
+                            <span class="user">name</span>, would you like to
+                            <a href="#" id="addBtn">add</a> them?</li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="snaps">
+                    <ul class="list-group"></ul>
+                </div>
+                <div class="tab-pane" id="new">
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" />
+                        <input name="recipients" />
+                        <input type="submit"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+        <script src="//d1fxtkz8shb9d2.cloudfront.net/sockjs-0.3.min.js"></script>
+        <script>
+            $('#login').modal();
+            if (localStorage && localStorage.username) $('#inUser').val(localStorage.username);
+        </script>
+        <script>
+            window.URL = window.URL || window.webkitURL;
+            var username;
+            var sock = new SockJS('http://5napchat-js.nykac.c9.io/rt');
+            sock.onopen = function() {
+                if (localStorage.auth_token && localStorage.username) {
+                    var data = JSON.stringify({
+                        action: 'relogon',
+                        user: localStorage.username,
+                        auth_token: localStorage.auth_token
+                    });
+                    sock.send(data);
+                }
+            };
+
+            var recvSnap = $('<a class="list-group-item">Recieved from <span class="name">Bob</span> <span class="date"></span></a>');
+            var sendSnap = $('<span class="list-group-item">Sent to <span class="name">Bob</span> <span class="date"></span></span>');
+            var lgi = $('<li class="list-group-item"><span class="name" contenteditable="plaintext-ONLY"></span><a href="#" class="pull-right entypo entypo-erase"></button></li>');
+
+            if(lgi.find('.name')[0].contentEditable !== 'plaintext-only')
+                lgi.find('.name').attr('contenteditable', true);
+
+            var friends = {};
+            var snaps = {};
+
+            var snapId;
+            var rememberMe = false;
+
+            RegExp.escape = function(string) {
+                return RegExp(string.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"), "i");
+            };
+            var isToday = function(date) {
+                return new Date().toDateString() == date.toDateString();
+            };
+            $('#friendFilter').keyup(function(e) {
+                var re = RegExp.escape(e.target.value);
+                var visible = 0;
+                $('#friends ul > li.list-group-item:not(.special)').each(function() {
+                    if ($(this).text().match(re)) {
+                        $(this).show(0);
+                        ++visible;
+                    }
+                    else $(this).hide(400);
+                });
+                if (!visible) {
+                    $('#friends ul > li.list-group-item.special').show(400).find('.user').text(e.target.value);
+                }
+                else $('#friends ul > li.list-group-item.special').hide();
+            });
+
+            $('#addBtn').click(function(e) {
+                e.preventDefault();
+                var friend = $('#friendFilter').val();
+                var data = {
+                    action: 'addFriend',
+                    friend: friend
+                };
+                var li = lgi.clone().attr('id', friend);
+                li.find('.name').text(friend);
+                $('#friends ul').append(li);
+                sock.send(JSON.stringify(data));
+                $('#friendFilter').val('').keyup();
+            });
+
+            $('#signIn').click(function(e) {
+                e.preventDefault();
+
+                var user = $('#inUser').val();
+                var pass = $('#inPass').val();
+
+                var data = JSON.stringify({
+                    action: 'login',
+                    user: user,
+                    pass: pass
+                });
+                rememberMe = $('#inRemember').is(':checked');
+                username = user;
+                sock.send(data);
+            });
+            $('#signUp').click(function(e) {
+                e.preventDefault();
+
+                var user = $('#upUser').val();
+                var pass = $('#upPass').val();
+                var phone = $('#upPhone').val();
+                var email = $('#upEmail').val();
+
+                console.log({
+                    user: user,
+                    pass: pass,
+                    phone: phone,
+                    email: email
+                });
+                rememberMe = $('#upRemember').is(':checked');
+                username = user;
+            });
+
+            $('#logout').click(function(e) {
+                sock.send('{"action":"logout"}');
+            });
+
+            var sortFriends = function() {
+                $('#friends > ul').append($('#friends ul > li.list-group-item:not(.special)').get().sort(function(a, b) {
+                    return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+                }));
+            };
+
+            var showVideo = function(obj) {
+                var url = obj.url;
+                var from = obj.from;
+                var modal = $('#snapVideo');
+                modal.find('video').attr('src', url);
+                modal.find('.name').text(from);
+                modal.modal('show');
+            };
+
+            var showImage = function(obj) {
+                var url = obj.url;
+                var from = obj.from;
+                var modal = $('#snapImage');
+                modal.find('img').attr('src', url);
+                modal.find('.name').text(from);
+                modal.modal('show');
+            };
+
+            var showSnap = function() {
+                var type = snaps[snapId].mime.substr(0, 5);
+                if (type == "image") return showImage(snaps[snapId]);
+                else return showVideo(snaps[snapId]);
+            };
+            var displaySnap = function(id) {
+                snapId = id;
+                if (snaps[id] && snaps[id].mime && snaps[id].url) {
+                    showSnap();
+                }
+            };
+
+            sock.onmessage = function(e) {
+                var message = JSON.parse(e.data);
+                switch (message.action) {
+                case "login":
+                    $('#login').modal('hide');
+                    break;
+                case "logout":
+                    localStorage.removeItem('auth_token');
+                    $('#login').modal('show');
+                    break;
+                case "sync":
+                    var sync = message.data;
+                    if (sync.message) {
+                        sock.onmessage({
+                            data: JSON.stringify({
+                                action: 'error',
+                                err: sync.message
+                            })
+                        });
+                        return;
+                    }
+                    username = sync.username || username;
+                    var frag = document.createDocumentFragment();
+                    sync.friends.forEach(function(friend) {
+                        var name = friend.display || friend.name;
+                        var uid = friend.name;
+                        friends[uid] = name;
+
+                        var li = lgi.clone().attr('id', uid).hide(0);
+                        li.find('.name').text(name).keydown(function(e) {
+                            if (e.keyCode != 13) return true;
+                            e.preventDefault();
+                            var newName = $(this).text();
+                            var friend = $(this).parent().attr('id');
+                            var data = JSON.stringify({
+                                action: 'rename',
+                                friend: friend,
+                                name: newName
+                            });
+                            sock.send(data);
+                            $(this).blur();
+                        });
+                        li.find('a').click(function(e) {
+                           e.preventDefault();
+                           var friend = $(this).parent().attr('id');
+                            var data = JSON.stringify({
+                                action: 'unfriend',
+                                friend: friend,
+                            });
+                            sock.send(data);
+                           $(this).parent().remove();
+                        });
+                        frag.appendChild(li[0]);
+                    });
+                    $('#friends ul>li.list-group-item:not(.special)').remove();
+                    $('#friends ul>li.special').before(frag);
+                    $('#friends input').keyup();
+                    sortFriends();
+
+                    var frag = document.createDocumentFragment();
+                    sync.snaps.forEach(function(snap) {
+                        var element;
+                        if (snap.sn) element = recvSnap.clone();
+                        else element = sendSnap.clone();
+                        var name = snap.sn || snap.rp;
+
+                        var recvd = new Date(snap.ts);
+                        element.attr('id', snap.id);
+                        element.find('.name').text(friends[name] || name);
+                        element.find('.date').text(isToday(recvd) ? 'at ' + recvd.toTimeString() : 'on ' + recvd.toDateString());
+
+                        if (recvd && (snap.t > 0) || (snap.m == 1)) {
+                            element.attr('href', '#').click(function(e) {
+                                e.preventDefault();
+                                if (!snaps[snap.id]) {
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open('GET', '/blob/' + username + '/' + snap.id);
+                                    xhr.responseType = 'blob';
+                                    xhr.onload = function(e) {
+                                        var blob = this.response;
+                                        window.blob = blob;
+                                        snaps[snap.id] = snaps[snap.id] || {};
+                                        snaps[snap.id].from = friends[name] || name;
+                                        snaps[snap.id].url = window.URL.createObjectURL(blob);
+                                        var reader = new FileReader();
+                                        reader.onload = function() {
+                                            switch (reader.result) {
+                                            case "\xff\xd8\xff":
+                                                snaps[snap.id].mime = "image/jpeg";
+                                                break;
+                                            case "\x00\x00\x00":
+                                                snaps[snap.id].mime = "video/mp4";
+                                                break;
+                                            case "GIF":
+                                                snaps[snap.id].mime = "image/gif";
+                                                break;
+                                            case "\x89PN":
+                                                snaps[snap.id].mime = "image/png";
+                                                break;
+                                            case "II*":
+                                            case "MM\x00":
+                                                snaps[snap.id].mime = "image/tiff";
+                                                break;
+                                            case "Ogg":
+                                                snaps[snap.id].mime = "application/ogg";
+                                                break;
+                                            default:
+                                                snaps[snap.id].mime = "unknown";
+                                            }
+                                            displaySnap(snap.id);
+                                        };
+                                        reader.readAsBinaryString(blob.slice(0, 3));
+                                    };
+                                    xhr.send();
+                                }
+                                displaySnap(snap.id);
+                            });
+                        }
+
+                        frag.appendChild(element[0]);
+                    });
+                    $('#snaps .list-group').empty().prepend(frag);
+
+                    if (sync.auth_token) {
+                        document.cookie = 'auth_token=' + sync.auth_token;
+                        if (rememberMe) localStorage.auth_token = sync.auth_token;
+                        else localStorage.removeItem('auth_token')
+                    }
+                    localStorage.username = username;
+                    $('.full_name').text(friends[username])
+                    $('.username').text(username);
+                    break;
+                case "error":
+                    $('.alert').show().find('.text').html(message.err).show();
+                    sock.onmessage({
+                        data: '{"action":"logout"}'
+                    });
+                    break;
+                default:
+                    console.log(message);
+                    break;
+                }
+            };
+        </script>
+    </body>
+
+</html>

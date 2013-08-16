@@ -1,0 +1,21 @@
+{
+  "name": "5napChat",
+  "version": "0.1.0",
+  "description": "A Snapchat client in javascript",
+  "main": "index.js",
+  "scripts": {
+      "start": "node ./index.js"
+  },
+  "repository": "https://github.com/nykac/5napchat-js",
+  "keywords": [
+    "Snapchat",
+    "snaphax"
+  ],
+  "author": "Lucas A. Dohring",
+  "license": "EUPL-1.1",
+  "dependencies": {
+    "sockjs": "~0.3.7",
+    "meryl": "~1.0.2",
+    "formidable": "~1.0.14"
+  }
+}
