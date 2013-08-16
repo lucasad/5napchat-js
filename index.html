@@ -299,7 +299,7 @@
         <script>
             window.URL = window.URL || window.webkitURL;
             var username;
-            var sock = new SockJS('http://5napchat-js.nykac.c9.io/rt');
+            var sock = new SockJS('https://5napchat.org/rt');
             sock.onopen = function() {
                 if (localStorage.auth_token && localStorage.username) {
                     var data = JSON.stringify({

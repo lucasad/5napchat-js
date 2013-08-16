@@ -2,10 +2,7 @@
   "name": "5napChat",
   "version": "0.1.0",
   "description": "A Snapchat client in javascript",
-  "main": "index.js",
-  "scripts": {
-      "start": "node ./index.js"
-  },
+  "homepage": "https://5napchat.org",
   "repository": "https://github.com/nykac/5napchat-js",
   "keywords": [
     "Snapchat",
