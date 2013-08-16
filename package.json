@@ -13,6 +13,7 @@
   "dependencies": {
     "sockjs": "~0.3.7",
     "meryl": "~1.0.2",
-    "formidable": "~1.0.14"
+    "formidable": "~1.0.14",
+    "snapchat": "*"
   }
 }
