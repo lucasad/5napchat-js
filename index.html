@@ -4,8 +4,7 @@
     <head>
         <title>5napChat</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//weloveiconfonts.com/api/?family=entypo">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <style>
             body {
                 overflow:hidden;
@@ -41,24 +40,19 @@
                 display:none;
                 list-style-type:none;
             }
-            .nobullet {
-                list-style-type:none;
-                padding:0;
-            }
-            .entypo {
-                font-family: entypo;
-                font-style:normal;
-            }
-            .list-group-item > a:link:hover.entypo {
-                text-decoration:none;
-            }
-            #snaps a:link {
-                text-decoration:underline;
-            }
+	    #snaps a:link {
+	        text-decoration: underline
+	    }
+	    #gh_fork > img {
+	        z-index:9999
+	    }
         </style>
     </head>
     
     <body>
+        <a href="https://github.com/nykac/5napchat-js" id="gh_fork">
+	    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+        </a>
         <div class="modal fade" id="login" data-backdrop="static" style="display:block">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -107,7 +101,7 @@
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
                                             <button type="submit" class="btn btn-primary pull-right" id="signIn">Sign in
-                                                <i class="entypo entypo-login"></i>
+                                                <i class="glyphicon glyphicon-log-in"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -151,7 +145,7 @@
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
                                             <button type="submit" class="btn btn-primary pull-right" id="signUp">Sign up
-                                                <i class="entypo entypo-login"></i>
+                                                <i class="glyphicon glyphicon-log-in"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -245,9 +239,9 @@
             <div>&nbsp;</div>
             <div class="pull-right btn-group">
                 <button class="btn btn-sm" data-target="#settings" data-toggle="modal">
-                    <i class="entypo entypo-tools"></i> Settings</button>
+                    <i class="glyphicon glyphicon-cog"></i> Settings</button>
                 <button class="btn btn-danger btn-sm" id="logout">Logout
-                    <i class="entypo entypo-logout"></i>
+                    <i class="glyphicon glyphicon-log-out"></i>
                 </button>
                 <span></span>
             </div>
@@ -256,13 +250,13 @@
             </h1>
             <ul class="nav nav-tabs">
                 <li class="active">
-                    <a href="#friends" data-toggle="tab">Friends <i class="entypo entypo-users"></i></a>
+                    <a href="#friends" data-toggle="tab">Friends <i class="glyphicon glyphicon-user"></i></a>
                 </li>
                 <li>
-                    <a href="#snaps" data-toggle="tab">Snaps <i class="entypo entypo-picture"></i></a>
+                    <a href="#snaps" data-toggle="tab">Snaps <i class="glyphicon glyphicon-picture"></i></a>
                 </li>
                 <li>
-                    <a href="#new" data-toggle="tab">New <i class="entypo entypo-camera"></i></a>
+                    <a href="#new" data-toggle="tab">New <i class="glyphicon glyphicon-camera"></i></a>
                 </li>
             </ul>
             <div class="tab-content" id="pane">
@@ -270,7 +264,7 @@
                     <ul class="list-group">
                         <li class="input-group">
                             <input id="friendFilter" class="form-control" />
-                            <i class="entypo entypo-search input-group-addon"></i>
+                            <i class="glyphicon glyphicon-search input-group-addon"></i>
                         </li>
                         <li class="special list-group-item">You don't have a friend named
                             <span class="user">name</span>, would you like to
@@ -313,7 +307,7 @@
 
             var recvSnap = $('<a class="list-group-item">Recieved from <span class="name">Bob</span> <span class="date"></span></a>');
             var sendSnap = $('<span class="list-group-item">Sent to <span class="name">Bob</span> <span class="date"></span></span>');
-            var lgi = $('<li class="list-group-item"><span class="name" contenteditable="plaintext-ONLY"></span><a href="#" class="pull-right entypo entypo-erase"></button></li>');
+            var lgi = $('<li class="list-group-item"><span class="name" contenteditable="plaintext-ONLY"></span><a href="#" class="pull-right glyphicon glyphicon-trash"></button></li>');
 
             if(lgi.find('.name')[0].contentEditable !== 'plaintext-only')
                 lgi.find('.name').attr('contenteditable', true);
